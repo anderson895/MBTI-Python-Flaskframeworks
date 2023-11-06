@@ -1,0 +1,160 @@
+/* Define a custom font 'FS Gravity' */
+@font-face {
+    font-family: 'FS Gravity';
+    src: url('/static/fonts/fs-gravity.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Styling for the 'Next' button */
+.next-button {
+    /* Set background image */
+    background-image: url('/static/img/NEXT BUTTON.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Button dimensions and styling */
+    width: 200px;
+    height: 50px;
+    border: 2px solid black;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+    cursor: pointer;
+    float: right;
+}
+
+/* General styling for the entire body */
+body {
+    text-align: center;
+    margin: 5px;
+    background-color: #f4f4f4;
+    /* Apply 'FS Gravity' font and set font size */
+    font-family: 'FS Gravity', sans-serif;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Styling for a general container */
+.container {
+    max-width: 90%;
+    margin: 10px auto 0;
+    padding: 3vw;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Styling for h3 elements */
+h3 {
+    margin-bottom: 2vh;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Styling for a specific question container */
+.containerQuestion {
+    /* Positioning and styling for the question container */
+    position: relative;
+    max-width: 60%;
+    margin: 0 auto;
+    background-color: black;
+    padding: 3vw;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+    border: 6px solid white;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Styling for images within the question container */
+.containerQuestions img[type="image"] {
+    width: 20%;
+    position: absolute;
+    top: 20%;
+    right: 5%;
+}
+
+/* Styling for choice buttons */
+.choice-button {
+    /* Design and appearance for choice buttons */
+    display: block;
+    padding: 1vw;
+    background-color: black;
+    border: 8px solid white;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+    width: 60%;
+    box-sizing: border-box;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Styling for hovered choice buttons */
+.choice-button:hover {
+    background-color: #007bff;
+    border-color: #fff;
+}
+
+/* Styling for selected choice buttons */
+.choice-button.selected {
+    background-color: #007bff;
+    border-color: #fff;
+}
+
+/* Styling for a custom control label */
+.custom-control-label:hover {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Styling for input of type submit */
+input[type="submit"] {
+    width: 100%;
+    padding: 2vh;
+    font-size: 16px; /* Set the font size (adjust as needed) */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        margin: 3vh 3vw;
+    }
+
+    /* Adjustments for containers and headings for smaller screens */
+    .container,
+    .containerQuestion {
+        max-width: 95%;
+        padding: 5vw;
+    }
+
+    h3 {
+        margin-bottom: 3vh;
+    }
+
+    /* Adjustments for a custom control */
+    .custom-control {
+        margin-bottom: 3vh;
+    }
+
+    /* Adjustments for input type submit */
+    input[type="submit"] {
+        padding: 3vh;
+    }
+}
+
+/* Styling for the submit button */
+#submitButton {
+    width: 200px;
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+#submitButton:hover {
+    transform: scale(1.1);
+}
+
+/* CSS to hide elements */
+.hidden {
+    display: none;
+}

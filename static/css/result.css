@@ -1,0 +1,45 @@
+/* Font face declaration for custom font 'FS Gravity' */
+@font-face {
+    font-family: 'FS Gravity';
+    src: url('/static/fonts/fs-gravity.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Styling for the entire body */
+body {
+    font-family: 'FS Gravity', sans-serif; /* Apply the 'FS Gravity' font to the body */
+    background-image: url('/static/img/BACKGROUNDS/Results Profile BG.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire background */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    body {
+        background-size: contain; /* Adjust background size for smaller screens */
+    }
+}
+
+/* Styling for unordered lists */
+ul {
+    list-style: none; /* Remove default list styles */
+}
+
+/* Styling for a general container */
+.container {
+    background-color: #d6bfaa; /* Background color */
+    border: 10px solid #c4a283; /* Border styling */
+    /* Other CSS declarations */
+}
+
+/* Normal state styling for input of type 'image' (a button in this case) */
+input[type=image] {
+    width: 350px; /* Set button width */
+    transition: transform 0.2s; /* Animation for hover effect */
+}
+
+/* Hover state styling for input of type 'image' */
+input[type=image]:hover {
+    transform: scale(1.1); /* Scale to 110% of normal size on hover */
+}

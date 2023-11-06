@@ -1,0 +1,64 @@
+/* Styling for the start button */
+.start-button {
+    cursor: pointer; /* Change cursor to a pointer */
+    transition: transform 0.2s; /* Apply a smooth transformation */
+    max-width: 100%; /* Maximum width */
+    height: auto; /* Adjust height automatically */
+}
+
+/* Hover state styling for the start button */
+.start-button:hover {
+    transform: scale(1.1); /* Enlarge the button on hover */
+}
+
+/* Media query for smaller screens (max-width: 767px) */
+@media (max-width: 767px) {
+    body {
+        background-position: top; /* Adjust background position to top */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    /* Adjustments for start button on smaller screens */
+    .start-button {
+        width: 80%; /* Adjust the width based on preferences */
+        position: fixed; /* Set as a fixed position */
+        bottom: 0;
+        left: 50%; /* Align to the center horizontally */
+        transform: translateX(-50%); /* Move left by 50% of its width */
+    }
+}
+
+/* Styling for the sound control button */
+#soundControl {
+    position: fixed; /* Set as a fixed position */
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Set a high z-index */
+}
+
+/* Styling for the sound control button icon */
+#soundControl button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+/* Styling for the sound control icon */
+#soundControl i {
+    font-size: 30px; /* Set the icon size */
+    color: #fff; /* Set default icon color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Hover state styling for the sound control icon */
+#soundControl i:hover {
+    color: #FFD700; /* Change color on hover to gold */
+}
+
+/* Media query for smaller screens (max-width: 576px) */
+@media (max-width: 576px) {
+    #soundControl {
+        bottom: 70px; /* Adjust bottom position */
+        right: 10px; /* Adjust right position */
+    }
+}

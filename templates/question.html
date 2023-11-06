@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personality Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Include Bootstrap CSS from a CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Include AlertifyJS library from a CDN for notifications/alerts -->
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs/build/alertify.min.js"></script>
+
+    <!-- Linking custom CSS for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/question.css') }}">
+
+    <!-- Inline styling for the body background -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('{{ url_for('static', filename='img/BACKGROUNDS/' + background_image) }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<!-- A container for the personality test -->
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="container">
+        <form id="personalityTestForm" method="post" action="/personality_test">
+            {% for choice in question['choices'] %}
+                <!-- Displaying choices as buttons -->
+                <button class="choice-button" type="button" data-value="{{ choice[0] }}" style="font-size: 25px;">{{ choice.split(":")[1] }}</button>
+                <br>
+            {% endfor %}
+            <!-- Display the question with a transition effect -->
+            <div style="font-size: 25px;" class="containerQuestion mt-4">
+                {{ question['question'] }}
+                <input type="hidden" name="selected_choice" id="selectedChoice">
+                <input type="image" src="/static/img/NEXT BUTTON.png" alt="Submit" style="width:200px; position: absolute; top: 90%; left:80%;" id="submitButton" disabled>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Audio element for a click sound -->
+<audio id="clickSound">
+    <source src="{{ url_for('static', filename='img/SOUNDS/click.mp3') }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+</body>
+</html>
+
+<script>
+    // JavaScript for handling the personality test functionality
+
+    // Selecting elements
+    const choiceButtons = document.querySelectorAll('.choice-button');
+    const submitButton = document.getElementById('submitButton');
+    const selectedChoice = document.getElementById('selectedChoice');
+    const clickSound = document.getElementById('clickSound');
+
+    // Add click event listeners to each choice button
+    choiceButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'selected' class from all buttons and add it to the clicked button
+            choiceButtons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+            // Set the value of the selected choice
+            selectedChoice.value = button.getAttribute('data-value');
+            // Enable the submit button
+            submitButton.disabled = false;
+            // Play a click sound when a button is clicked
+            clickSound.play();
+        });
+    });
+</script>

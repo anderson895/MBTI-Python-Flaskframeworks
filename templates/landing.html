@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title> <!---this code is for browser title bar--->
+
+   <!-- Set the viewport meta tag for responsive web design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Internal CSS -->
+    <style>
+   /* Styling for the body element */
+        body {
+            background-image: url("{{ url_for('static', filename='img/BACKGROUNDS/Start Page (BG).jpg') }}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Bootstrap container for content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4 text-center">
+                <!-- Start button linked to '/start' endpoint -->
+                <a href="/start">
+                    <img src="{{ url_for('static', filename='img/START BUTTON.png') }}" alt="Start Button" class="start-button img-fluid">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio player for background music -->
+    <audio id="audio" autoplay loop>
+        <source src="{{ url_for('static', filename='img/SOUNDS/backgroundMusic.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Sound control button -->
+    <div id="soundControl">
+        <button class="btn">
+            <i id="soundIcon" class="fas fa-volume-mute"></i>
+        </button>
+    </div>
+</body>
+</html>
+
+<!-- JavaScript code to control audio playback -->
+<script>
+    const audio = document.getElementById('audio');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundControl = document.getElementById('soundControl');
+
+    soundControl.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            soundIcon.classList.remove('fa-volume-mute');
+            soundIcon.classList.add('fa-volume-up');
+        } else {
+            audio.pause();
+            soundIcon.classList.remove('fa-volume-up');
+            soundIcon.classList.add('fa-volume-mute');
+        }
+    });
+</script>

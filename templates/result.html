@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personality Test Result</title>
+
+    <!-- Linking Bootstrap CSS Content Delivery Network(CDN)-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Linking custom CSS for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+</head>
+<body>
+    <!-- The overall layout structure is defined within a series of div elements -->
+
+    <div class="container-fluid p-5 bg-black">
+        <div class="container rounded p-10">
+
+            <!-- Displaying an image as the background -->
+            <img src="{{ url_for('static', filename=background_image) }}" class="img-fluid" alt="Background Image">
+
+            <!-- Displaying test results -->
+            <div class="row">
+                <div class="col mr-4 ml-4 mb-4 mt-4" style="background-color: #c4a283; border-radius: 5px;">
+                    <div class="result">
+                        <h2>{{ chosenletters }}: {{ title }}</h2>
+                        <p>{{ description }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Displaying strengths and weaknesses -->
+            <div class="row">
+                <div class="col mr-4 ml-4" style="background-color:#c4a283; border-radius:5px;">
+                    <h4>Strengths:</h4>
+                    <!-- Displaying strengths as a list -->
+                    {% for strength in strength_list %}
+                        <li>{{ strength.split('.')[0] }}</li>
+                    {% endfor %}
+                </div>
+                <div class="col mr-4 ml-4" style="background-color:#c4a283; border-radius:5px;">
+                    <h4>Weaknesses:</h4>
+                    <!-- Displaying weaknesses as a list -->
+                    {% for weakness in weakness_list %}
+                        <li>{{ weakness.split('.')[0] }}</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Displaying the best career paths for the personality type -->
+            <div class="row">
+                <div class="col mr-4 ml-4 mt-4" style="background-color:#c4a283; border-radius:5px;">
+                    <h4>Best Career Path for {{ chosenletters }}:</h4>
+                    <!-- Displaying career paths as a list -->
+                    {% for career in careers.split(', ') %}
+                        <li>{{ career }}</li>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Displaying compatibility with other personality types -->
+            <div class="row">
+                <div class="col mr-4 ml-4 mt-4 mb-4" style="background-color:#c4a283; border-radius:5px;">
+                    <h1>Most Compatible with:</h1>
+                    <!-- Displaying compatible types with images and names -->
+                    {% for compatible_type in compatible_list %}
+                        <img src="static/img/character/{{ compatible_type.split('.')[0] }}.png" alt="{{ compatible_type.split('.')[0] }}" class="img-fluid">
+                        <p>{{ compatible_type }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Back to Landing Page button -->
+            <form action="{{ url_for('landing') }}" method="get">
+                <input type="image" src="/static/img/BACK TO MENU BUTTON.png" alt="Back to Landing Page" style="width:350px;">
+            </form>
+        </div>
+    </div>
+
+    <!-- Uncommented code for an audio element control -->
+    <!--
+    <audio id="audio" autoplay loop>
+        <source src="{{ url_for('static', filename='img/SOUNDS/backgroundMusic.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    -->
+
+    <!-- Uncommented code for a button to control audio -->
+    <!--
+    <div id="soundControl">
+        <button class="btn">
+            <i id="soundIcon" class="fas fa-volume-mute"></i>
+        </button>
+    </div>
+    -->
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript commented out, intended for controlling audio -->
+    <!--
+    <script>
+        const audio = document.getElementById('audio');
+        const soundIcon = document.getElementById('soundIcon');
+        const soundControl = document.getElementById('soundControl');
+
+        soundControl.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                soundIcon.classList.remove('fa-volume-mute');
+                soundIcon.classList.add('fa-volume-up');
+            } else {
+                audio.pause();
+                soundIcon.classList.remove('fa-volume-up');
+                soundIcon.classList.add('fa-volume-mute');
+            }
+        });
+    </script>
+    -->
+</body>
+</html>
