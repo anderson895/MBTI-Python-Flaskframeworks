@@ -1,4 +1,4 @@
-# MBTI-Python-Flask-framework
+# MBTI Personality Quest-Python-Flask-framework
 
 ![image](https://github.com/anderson895/MBTI-Python-Flask-framework/assets/105678913/f6b0590c-a360-4ea8-ab80-e0278fc8eeff)
 ![image](https://github.com/anderson895/MBTI-Python-Flask-framework/assets/105678913/3a9003ed-d7f5-41a7-b9a2-8e0495cf0156)
